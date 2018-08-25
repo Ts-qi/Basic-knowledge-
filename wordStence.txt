@@ -1,0 +1,26 @@
+语句：  block 语句--- 块语句； var 语句--申明语句；
+
+1  block 语句：  组合 0 ~ 多个语句； 用一对花括号定义； 
+   语法： 
+   {
+       语句1 ；
+       语句2 ；
+       ..... 
+       语句n ； 
+
+   }
+   在开发中； 常和 if 等配合； 比如： if（true）{  语句。。。。。};
+
+2 var 语句； 
+
+3 try   catch  语句；  
+     try {
+         throw 'test'
+     }catch {
+         console.log('error)//  错误的时候抛出的错误； 没有则不走这一步；
+     } finally {
+         console.log('不管怎么样； 都会走这一步;')
+     }
+
+      有三种组合：  try  catch ;   try  finally;  try   catch   finally;
+      
