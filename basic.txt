@@ -1,0 +1,35 @@
+ 类型检测； 
+
+1  typeof : 判断基本类型；
+2 intanceof：   a 基于原型链的检测；
+                b  一般对函数，数组，对象， 进行检测，返回的时候 true 和 false；
+                c 在不同的window 或者iframe 间的对象检测不能用 Instanceof;
+                d 可以检测自定义对象；如： person = new A(); person instanceof A ===> true;
+3 tostring()：  object.prototype.toString.apply([]) === "[object Array]"
+                 object.prototype.toString.apply(function(){}) === "[object Function]"
+                 object.prototype.toString.apply(null) === "[object null]" ie 6 7 8 返回的是 [object object]
+                 object.prototype.toString.apply(undifind) === "[object undifind]"‘
+4 constructor : 指向构造函数的； 
+5 dunk type： 去通过对象的特征去判断是否为响应的类型； 比如： 判断数组，可以去看有莫有数组的方法；
+
+常用表达式：  
+
+    1 原始表达式；初始化表达式；属性访问表达式；调用表达式； 对象创建表达式；
+
+运算符： 
+
+    一元运算符： +num;     二元运算符： a+b ; 三元运算符： a ? b: c ;
+    常见的运算符： 
+
+    赋值： x+ = 1;   比较： a== b ;算术： a- b ; 位 ： a | b;  逻辑：  a && b ; 字符串: 'a'+'b'；特殊： delete obj.x;
+
+    特殊运算符： 
+         1 逗号运算符； var val = (1,2,3); // val = 3; 从左到右的计算； 
+          2 new  运算符； 创建的对象；比如： 
+                    function Foo() {}, Foo.prototype.x = 1;
+                    var obj = new Foo(); 
+                    obj.x = 1; 
+                    obj.hasOwnProperty('x) ;//false; // 通过这个方法，判断 x 属性是自身的属性，还是是在原型链上的属性； 
+                    obj._proto_.hasOwnProperty('x');// true;
+          3 void 0 : undefined; 
+
