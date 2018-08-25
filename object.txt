@@ -1,0 +1,49 @@
+ 
+对象中的属性都是无序的； 每个属性都有对应的字符串 key  ,以及相应的值 value；
+    1  每一个对象都有一个prototype;  
+    2 对象的每一个属性 都有相应的方法等可以去进行访问，操作等；
+        如 ： writable -- 是否 可写？  enumerabla -- 是否可删除 ？  configurable --- 是否可删除 ？ value  , get /set 方法； extensible 是否可以继续增加对象； 
+    
+创建对象： 
+    
+     1 字面量；  创建的对象； 它的原型是会指向 object.prototype  = null ;其值等于 null；
+        var obj = {
+            x: 1,
+            y: 2
+        }
+    2 new /原型链； 
+
+     通过 new  去构造的对象，它的原型会指向构造器的 prototype  属性； 
+       
+        fun Foo() {}; 
+         var obj = new Foo();  obj 的原型就会指向 Foo 的prototype 属性；
+       作用： 
+
+       注意： 
+            1 所有的对象都有一个tostring 的方法（ 通过 object.create(null）创建的对象没有；）； 因为所有的对象； 在查找原型链的时候，在原型链的顶端，都有一个               object.prototype ; tostring 方法 就是object.prototype 的方法；
+            2 如果在给对象添加值； 如： obj.z = 5; 那么首先它会去对象 obj的自身属性上去找这个 z ; 如果有 z ，就更改； 如果没有 就增加一个 z 的属性； 不会去到原型链上增加；就是 obj.hasOwnProperty.z  为 true; 它所继承的原型链上的 z  还是不会 变的 即是： Foo.protoitype.z = 原来的值； 如果想拿到foo 原型上的z值； 要先删除掉 delete obj.z ; 然后 obj.z = Foo.protoitype.z;
+            这就是原型继承； 可以继承到 Foo 的属性； 反过来又不会去修改到 Foo 的原型；
+
+    3  object.create();
+       var obj = object.create({
+           x: 1
+       }) ; // 创建出来的对象 obj 的原型指向的是对象 {x: 1};所有的值是继承于 {x: q} 上的属性； obj.hasOwnProperty.x // false;
+
+       var obj = object.create(null); 传入的值是 null; 他的原型就是一个空值 null ; 就是说obj 的指针就是指向的 null；
+
+ 对象的属性操作： 
+
+    常见的如： 
+     1 读写属性； 
+        var obj = {
+          x:1，
+          y: 2
+         };
+         obj.x =1; obj.y = 2 ; obj['x]= 1; ...
+         在用 for  in ; 对对象的属性进行遍历的时候，原型链上的属性也可能会被遍历出来；是无序的；
+     
+     
+     2 属性异常； undefined 等；
+     3 删除属性；  delete 
+     4 检测属性； hasOwnProperty ;检测是都是自身的属性
+     5枚举属性； enumerable;
