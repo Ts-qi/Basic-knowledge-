@@ -1,0 +1,13 @@
+1 PropTypes 与 defaultProps; 
+
+    PropTypes子组件中接受的 props 数据； 对 react  中的 props 数据类型做强校验； 相当于  vue 中的 props 的检验； isrequired 是必传；  PropTypes.arrayof (PropTypes.number, PropTypes,string ); arrayof 意思是传过来的值是数字 或者字符串；
+
+    如果在没有传值的时候，defaultProps 组件中的默认值 ；
+
+2 props ,state,render 函数之间的关系；
+
+    当组件的 state 或者 props 发生改变的时候，render 函数救会重新渲染，
+    当父组件中的 render 函数被运行时，子组件中的 render 函数也会被重新执行；
+
+
+
