@@ -1,0 +1,10 @@
+1 raect 中的 render 在渲染页面的时候； 
+    a  调用 JSX 语法 ；
+    b 利用 jsx 语法，通过createElement 方法，将 render 函数中的各种标签变为 js  的对象（虚拟 DOM）；
+    3 在将 js 对象（虚拟 DOM） 转化为真实的 DOM ；渲染在页面上；
+
+
+ 虚拟 DOM 带来的好处： 
+
+    1 性能提升；
+    2 它使得跨端应用得以实现； react native；
