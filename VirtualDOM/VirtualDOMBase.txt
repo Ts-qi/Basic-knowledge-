@@ -35,10 +35,11 @@ VirtualDOM 的来源：
         页面第一次渲染：
                 1 state 数据； 
                 2 JSX 模板；
-                3 数据 + 模板 结合，生成真实的 DOM，来显示在页面上；
-                4 生成虚拟 DOM； （虚拟 DOM 就是一个js 对象，用它来描述真实 DOM）；
+                3 数据 + 模板  生成虚拟 DOM； （虚拟 DOM 就是一个js 对象，用它来描述真实 DOM）；
                     语法： <div id="abc"> <span> hello world </span></div>;
                         [ 标签名（‘div’）,标签属性-- {id: 'abc'} , 内容-- [ 标签名-- 'span', 标签属性--- {}，标签内容--- ‘hello world’]],
+                4 用虚拟 DOM 的结构生成真实的 DOM，来显示在页面上；
+
                 5 state 发生变化；
                 6 数据 + 模板生成新的生成新的虚拟 DOM ；
                     <div id="abc"> <span> hello world </span></div>;
