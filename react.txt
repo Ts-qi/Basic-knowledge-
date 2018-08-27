@@ -7,7 +7,11 @@
 2 props ,state,render 函数之间的关系；
 
     当组件的 state 或者 props 发生改变的时候，render 函数救会重新渲染，
-    当父组件中的 render 函数被运行时，子组件中的 render 函数也会被重新执行；
+    当父组件中的 render 函数被运行时，子组件中的 render 
+    
+3 setState方法： 
+
+    异步操作； 具有回调性质；  this.setState({},callback())
 
 
 
