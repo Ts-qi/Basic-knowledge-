@@ -1,0 +1,13 @@
+对象中的属性： 
+
+
+    Object.difineProperty(person,'name', {
+        configruable: false; // false 表示不能被删除；
+        writeable: false ,// false 表示的是不可以更改；
+        enumerable: false,// 枚举属性； false  表示是不可枚举  那么以下三个方法拿不到响应的 value值：  
+        *   for..in循环
+        * Object.keys方法
+        * JSON.stringify方法
+        for...in循环和Object.keys方法的区别，在于for ...in 包括对象继承自原型对象的属性，而后者只包括对象本身的属性
+        value:' 唐七', // name's value;
+    })
