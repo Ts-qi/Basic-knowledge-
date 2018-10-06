@@ -11,3 +11,16 @@
         for...in循环和Object.keys方法的区别，在于for ...in 包括对象继承自原型对象的属性，而后者只包括对象本身的属性
         value:' 唐七', // name's value;
     })
+
+                    configruable： true;         configruable： true;                configruable： false;              configruable： false;
+                    writeable: true;            writeable:false;                     writeable:true;                    writeable:false;
+
+修改属性的值：              ok                          ok                                  ok                                  No 
+
+通过属性赋值修改属性的值：      ok                         NO                                 ok                                  No 
+
+
+delete 该属性返回 true： ok                             ok                                  No                                  NO 
+
+修改setter / getter 方法： ok                           ok                                  No                                  NO ;
+
