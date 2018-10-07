@@ -1,0 +1,20 @@
+函数调用： 
+   1  直接调用； foo()  ;  2 对象方法： obj.method();  3 new : new Foo() ;4 call /apply/bind;: fun.call(o);
+
+函数声明和函数表达式： 
+
+函数申明：  function  foo() {}; 
+
+函数表达式：
+         1 var add = function () {};
+         2 (function () {
+
+         })();
+         3 return function(){
+
+         };
+         命名函数表达式： var func = function fn() {
+             do sth; 做递归调用； 
+             fn();
+         }
+区别： 函数声明 可以前置 (函数提升)； 函数表达式 不能前置；
