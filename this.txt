@@ -1,0 +1,17 @@
+1  全局作用下： this === window； 
+
+2  一般函数的this； function fn（） { return this }  fn() === window；// true ; 
+    在严格模式下； this === undefined; //true;
+
+3 作为对象方法中的 this ;
+
+4 对象原型链上的 this; 
+
+5 get /set 中的this; 
+
+6 构造器中的 This ;
+
+7 call/apply 中的 This; 
+    call  中的数据是作为扁平的传递； apply 是可以传递数组的方式传递参数； 
+
+8 bind 中的 This;
