@@ -14,5 +14,5 @@
 7 call/apply 中的 This; 
     call  中的数据是作为扁平的传递； apply 是可以传递数组的方式传递参数； 
 
-8 bind 中的 This  获取到 this; 
+8 bind 中的 This  获取到 当前的this; 
 
