@@ -10,6 +10,57 @@
         <h1>this </h1>
     </div>
     <script>
-        //  1 
+      // 工作中常见的 this 的情况总结
+    // 1  全局执行
+    console.log('全局',this) // window 
+
+    // 二 函数总执行  
+        // 1 严格模式下执行： 
+        function name1() {
+            console.log(this)// window;
+        };
+        name1();
+        // 2 严格 模式下执行
+        
+        "use strict";
+        function name2() {
+            console.log(this)//undefined
+        };
+        name2();
+    // 三 作为对象的方法调用；
+        // 1 当一个函数被当作一个对象的方法调用的时候，this 指向当前的对象 obj：
+        var obj = {
+            name:'tangqi',
+            fun: function() {
+                console.log(this.name) // tangqi
+            }
+        }
+        obj.fun();
+        // 2 如果把对像的方法赋值给一个变量，调用该方法时，this 指向 Window：
+        var obj = {
+            name:'tangqi',
+            fun: function() {
+                console.log(this) // window
+            }
+        }
+        var test = obj.fun;
+        test();
+        // 四  作为一个构造函数使用； 
+            // 1 为了实现 js  中的类，常定义一些构造函数； 在用这个函数之前，在其前面加上 new  关键字； 
+            function Person(name,age,height) {
+                this.name = name; 
+                this.age = age;
+                this.height = height;
+                console.log(this,'构造函数') // Person {name: "tangqi", age: 12, height: 170}
+            }
+            var p = new Person('tangqi',12, 170)
+           // 2 若将构造函数当作普通函数来用； this 指向的是 window; 
+            function Person(name, age, height) {
+                    this.name = name;
+                    this.age = age;
+                    this.height = height;
+                    console.log(this, '构造函数') // window
+                }
+                 Person('tangqi', 12, 170)
     </script>
 </body>
