@@ -21,6 +21,10 @@
 
 7 HOC ：  高阶组件：一般用来重用  逻辑 ，复杂的应用等；HOC 的最好方式 就是共享 react 之间的行为； 如果在一个业务中使用了大量的重复的代码，逻辑等； 这个时候 就要考虑使用react 了；
 
+8 在 react中 的constuctor 中为什么要调用super(props) ？ 因为 在super()调用之前，子类是不能使用 This 的；在 ES6 中子类必须调用 super ();传递 props 给 super() 的原因则是便于(在子类中)能在 constructor 访问 this.props;
+
+
+
          
 
 
