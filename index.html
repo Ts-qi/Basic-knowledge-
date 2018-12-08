@@ -7,9 +7,40 @@
 </head>
 <body>
     <div>
-        <h1>this </h1>
+        <h1>简单的 MVVM 数据双向绑定 </h1>
+        <input type="text" id="input">
     </div>
     <script>
+        // 数据双向绑定； 
+        const data = {};
+        const  input = document.getElementById('input');
+        Object.defineProperty( data, 'text', {
+            set (value) {
+                input.value = value;
+                this.value = value;
+            }
+        });
+        input.onchange = function(e) {
+            data.text = e.target.value;
+            console.log(data.text)
+        }
+
+
+        console.log(2, '2')
+        setTimeout(() => {
+            console.log(1,'1')
+        }, 0);
+        new Promise((resolve,reject) => {
+            
+            resolve(3)
+            console.log(4,'4')
+        }).then(res=> {
+            console.log(res,'3')
+        });
+        console.log(5,'5')
+
+
+
       // 工作中常见的 this 的情况总结
     // 1  全局执行
     console.log('全局',this) // window 
