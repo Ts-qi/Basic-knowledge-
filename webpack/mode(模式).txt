@@ -1,0 +1,68 @@
+
+webpack
+mode-- 模式；告知 webpack 使用相应模式的内置优化； 
+
+1 默认值： production; 
+
+2 用法： 在配置项中： 
+  module.exports = {
+    mode:'production'
+  };
+  或者从CLI 中将参数传递过去： webpack --mode=production;
+3 mode 支持的值： 
+
+  a, production  
+    描述： 会将process.env.NODE_ENV 的值设置为 development; 
+    启用的插件： NamedChunksPlugin 和 NamedeModulesPlugin;
+  b, production
+    描述： 会将 peocess.env.NODE_ENV的值设置为 production;
+    启用的插件： FlagDependencyUsagePlugin, FlagIncludedChunksPlugin,ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 UglifyJsPlugin
+  c，none 
+    描述： 不选用任何默认的优化选项；
+
+4 演示行为： 
+
+  mode: development;
+  //webpack.development.config.js 
+  module.exports = {
+    + mode: 'development'
+    - plugins: [
+    -   new webpack.NamedModulesPlugin(),
+    -   new webpack.NamedChunksPlugin(),
+    -   new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") }),
+    - ]
+}
+
+mode: production;
+// webpack.production.config.js
+module.exports = {
++  mode: 'production',
+-  plugins: [
+-    new UglifyJsPlugin(/* ... */),
+-    new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
+-    new webpack.optimize.ModuleConcatenationPlugin(),
+-    new webpack.NoEmitOnErrorsPlugin()
+-  ]
+}
+
+mode: none 
+// webpack.custom.config.js
+module.exports = {
++  mode: 'none',
+-  plugins: [
+-  ]
+}
+5 如果想要根据 webpack.config.js 中的mode 去影响编译行为；那么就必须将配置对象改为一个函数导出；
+
+var config = {
+  entry: './app/js'
+}
+module.exports = (env,argv) => {
+  if(argv.mode === 'production') {
+    config.devtool = 'source-map
+  }
+  if(argv.mode === 'development') {
+    ......
+  }
+  return config;
+}
