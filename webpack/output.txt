@@ -1,0 +1,26 @@
+webpack 
+
+output 和入口 entry 相对； 入口 entry 可以用多个入口文件；但是针对输出只能有一个输出文件；
+
+1 单个文件配置要求： 将值设置为一个对象：
+  module.exports = {
+    output: {
+      filename: 'bundle.js',//用于输出文件的文件名
+      path:'/home/projict/public/assets'//目标输出目录path 的绝对路径；
+    }
+  }
+  此文件配置的的文件最终输出到：/home/projict/public/assets/bundle.js;
+
+2 多个入口起点；
+module.exports= {
+  entry: {
+    app: './src/app.js',
+    sesrch: './src/sesrch.js'
+  },
+  output: {
+    filename:'[name].js',
+    path:_dirname + ''dist,
+  }
+};
+
+此处文件配置的多文件最终输出的是： ./dist/app.js, ./dist/search.js;
