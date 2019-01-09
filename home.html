@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 onclick="clickA()" >唐七</h1>
+    <div class='click'>1</div>
+    <div class='click'>2</div>
+    <div class='click'>3</div>
+    <div class='click'>4</div>
+    <script>
+        const p1 = { 
+            age: 25, 
+            name: 'tangqi'
+        }
+        function test(person){
+            person.age = 26;
+            person = {
+                age:30,
+                name: 'tt'
+            }
+            // return person;
+        };
+
+        function getClass(cls) {
+            return document.getElementsByClassName(cls)
+        }
+     
+        const p2 =test(p1)
+        console.log(p1,'-----p1')
+        console.log(p2,'-------p2')
+
+        var items = getClass('click')
+
+        
+            
+            for( var i=0; i< items.length-1;i++) {
+                items[i].onclick = function() {
+                    console.log(i)
+                }
+            }
+
+            console.log(i,'00')
+
+
+            
+
+    </script>
+</body>
+</html>
