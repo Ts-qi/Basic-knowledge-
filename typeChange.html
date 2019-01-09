@@ -26,11 +26,24 @@
     
     */
 
-   
-    var total = setTimeout( function(x,y,z) {
+   setTimeout( function(x,y,z) {
         console.log(x+y+z) // 6
     },1000,1,2,3)
+
+
+    /*
+    深浅拷贝 
+    浅拷贝
+    1  object. assgin(): 只是拷贝了属性值；如果是引用类型 则只是拷贝了 地址； 在堆中的内容并没有被拷贝‘
     
+    */
+    
+    var a = {
+        age:1
+    }
+    var b = a; // b =  {...a}
+    a.age = 9;
+    console.log(b,'b');// 9 
     
     </script>
 </body>
