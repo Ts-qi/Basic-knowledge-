@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+     /*
+     
+       js 的 所有循环；
+       for   forEach   for... of     for... in   map 
+     */
+     //1  for  所有的 都可以用； 最早期的 javascript 使用规范
+
+     const arr = ['1','2','3','4','5']
+
+     for( var i=0;i<arr.length;i++) {
+         console.log(arr[i])// 1 2 3 4 5 
+     }
+
+     // forEach
+
+     arr.forEach(item => {
+         console.log(item)//1 2 3 4 5
+     })
+    // 在循环过程中 不能被阻断；意思就是不能有 return  或者break ； 去阻断；没有用 
+
+     // for .... of  针对可枚举的对象设计
+
+     /*
+        Object.keys() 获取到对象的 key  
+        Object.values() 获取到对象的 value 值
+     
+     
+     */
+
+    
+    </script>
+</body>
+</html>
