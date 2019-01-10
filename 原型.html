@@ -15,9 +15,10 @@
          *  原因： 1 创建的一个对象上面 有一个 _proto_ 的属性，这个属性指向了原型；
          *          这个属性在现在来说已经不推荐直接去使用它了，这只是浏览器在早期为了让我们访问到内部属性 [[prototype]] 来实现的一个东西;
          *          而这个属性是一个对象 里面有很多的方法；
-         *         2  里面有一个 construetor 的构造函数；这个函数里面 有原型链 prototype
+         *         2  里面有一个 construetor 的构造函数；这个函数里面 有原型链 prototype； 
          * 
-         * 
+         *         3 prototype 里面又有一个construstor 属性； 以此类推
+         * 总结： 原型的construstor属性指向的是构造函数； 
         */
     </script>
 </body>
