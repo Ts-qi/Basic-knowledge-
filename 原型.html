@@ -18,7 +18,8 @@
          *         2  里面有一个 construetor 的构造函数；这个函数里面 有原型链 prototype； 
          * 
          *         3 prototype 里面又有一个construstor 属性； 以此类推
-         * 总结： 原型的construstor属性指向的是构造函数； 
+         * 总结： 原型的construstor属性指向的是构造函数； 构造函数 又通过prototype属性指回原型；
+         *      但是Function.prototype.bind/apply/call ()没有这个属性；
         */
     </script>
 </body>
