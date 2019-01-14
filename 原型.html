@@ -20,6 +20,12 @@
          *         3 prototype 里面又有一个construstor 属性； 以此类推
          * 总结： 原型的construstor属性指向的是构造函数； 构造函数 又通过prototype属性指回原型；
          *      但是Function.prototype.bind/apply/call ()没有这个属性；
+
+             4 Object 是所有对象的爸爸； 所有的对象都可以通过_proto_ 去找到它； 
+             5 Function是所有函数的爸爸； 所有的函数都可以通过_proto_ 去找到它；
+             6 函数的prototype 是一个对象；
+             7 对象的_proto_ 指向的是原型； _proto_ 将对象和原型链接起来组成了原型链；
+
         */
     </script>
 </body>
