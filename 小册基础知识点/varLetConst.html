@@ -15,9 +15,18 @@
     1 var  存在变量提升； 当使用 var 声明变量的时候，会挂载在 window 上；提升到作用域的最上层；
      2 let  const  ； 使用的时候并不会被挂载在 window 上；
 
-     3 如果在使用 let 声明一个变量之前使用了这个变量；就会抛出一个错误； 变量   is not defined; 
+     3 如果在使用 let 声明一个变量之前使用了这个变量；就会抛出一个错误；Uncaught ReferenceError:  变量   is not defined; 
         这里的报错原因就是暂时性死区；语法上称为：暂时性死区；
     
+
+
+    总结： 1 函数提升优先于变量提升； （声明式函数 function fn() {} 与 表达式 var  fn = function() {}）； 函数提升会把整个函数提到作用域的顶部；
+            变量提升只会把 声明提到作用域的顶部 ; 
+          2 var  存在变量提升； let  和 const 因为存在 暂时性死区，不能在声明前使用；
+
+          3 var 在全局作用域下使用，会挂载在 window 上，2=而 let  和const 则不会挂载； 
+
+          4 let  和const  的作用一致， 但是 const  声明的东西 不能再次的进行赋值； 
     */
     
     </script>
