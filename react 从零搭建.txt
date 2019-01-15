@@ -24,5 +24,11 @@
     1 首先在webpack.config.js 中去引进 html-webpack-plugin 的插件;
     2 在进行 plugins: [new HtmlWebpackPlugin({title:'production'})]
         这里的 title  参数； 是生成的 HTML 的标题 ； 可以设置模板； 自定义模板 如： template: './src/index.html'
+        这里在 webpack 4.0 中有一个改革： 可以自己定义 mode 的相应模式；详情参见 webpack 知识点；
 
-13 
+/*    以上是webpack  的基本配置 ；
+
+
+开始配置 react 相关知识点  */
+
+14 下载 react 相关: npm install react react-dom -D
