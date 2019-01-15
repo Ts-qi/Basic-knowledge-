@@ -18,12 +18,20 @@ module.exports = {
             {
                 test: /\.(png|jpeg|gif|svg|jpg)$/,
                 use: [ 'url-loader']
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
             }
         ]
     },
     plugins:[
         new HtmlWebpackPlugin({
             title:'react-project',
+            template:'./index.html'
         })
     ]
 }

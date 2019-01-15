@@ -31,4 +31,57 @@
 
 开始配置 react 相关知识点  */
 
-14 下载 react 相关: npm install react react-dom -D
+14 下载 react 相关: npm install react react-dom -D;
+
+15 因为 react 是 jsx 语法所写，所以需要配置babel 进行转换；
+    下载相应的模块 npm babel-core(核心文件) babel-prsent-env (将ES6转义成ES5) babel-prsent-react (将 jsx 转为 js )
+     babel-loader(将webpack 的 babel 进行转换)  注意  babel 7.0 以上的版本  @babel/core  等等 以此类推
+16 在根目录下 创建一个.babelrc 文件 ；内容是
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react", "mobx"],
+    "plugins": [
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-transform-runtime"
+    ]
+}
+
+17 进行 jsx 的转换； 在webpack.config.js 的modules.rules中加入此配置 {
+	test: /\.(js|jsx)$/,
+	exclude: /node_modules/,//===> node_modules目录下的文件除外
+	use: {
+		loader: 'babel-loader'
+	}
+}
+18  在根目录建立一个 HTML 文件； 在webpack中的 plugins 中配置； plugins:[
+        new HtmlWebpackPlugin({
+            title:'react-project',
+            template:'./index.html'
+        })
+    ]
+19 
+
+
+
+
+
+  "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@types/react": "^16.4.16",
+    "@types/react-dom": "^16.0.9",
+    "antd": "^3.12.3",
+    "antd-mobile": "^2.2.5",
+    "css-loader": "^2.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-import": "^1.8.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-fetch": "^2.2.2"
