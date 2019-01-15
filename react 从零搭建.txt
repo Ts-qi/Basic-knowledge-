@@ -1,0 +1,28 @@
+1 初始化package.json : npm init 
+
+2 生成文件夹 mkdir src; 
+
+3 下载webpack ： npm install webpack  webpack-cli -D(--save-dev);
+
+4 根目录创建webpack.config.js 的配置文件；进行相关打包配置;
+
+5 src 目录下创建index.js 和 index.html 文件； 
+
+6 在 package.json 中配置 'scripts': { 'build': 'webpack'}
+
+7 运行 npm run build 就可以看到 dist 目录下出现一个 app.js 的配置文件；进行相关打包配置
+
+8 下载各种模板配置： npm install style-loader css-loader url-loader --save-dev；
+
+9 在 webpack.config.js 中去配置 module 模块；
+
+10 在src 下面创建一个 main.css 的文件夹；然后在 index.js 中去引入进去；
+
+11 下载 html-webpack-plugin 包： npm install html-webpack-plugin -D
+
+12 在进行 webpack 中的 HTML 的插件配置；
+    1 首先在webpack.config.js 中去引进 html-webpack-plugin 的插件;
+    2 在进行 plugins: [new HtmlWebpackPlugin({title:'production'})]
+        这里的 title  参数； 是生成的 HTML 的标题 ； 可以设置模板； 自定义模板 如： template: './src/index.html'
+
+13 
