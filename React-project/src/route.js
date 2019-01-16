@@ -4,15 +4,32 @@ import {
     Route
 } from 'react-router-dom';
 import React from 'react'
+import Loadable from 'react-loadable';
 
-import Home from './components/home/home.js'
-import Goods from './components/goods/goods.js'
-import Setting from './components/setting/setting.js'
-import Vip from './components/vip/vip.js'
-import Store from './components/store/store.js'
-import Data from './components/data/data.js'
-
-
+const Home = Loadable({
+    loader: () => import('./components/home/home.js'),
+    loading: () => null
+})
+const Goods = Loadable({
+    loader: () => import('./components/goods/goods.js'),
+    loading: () => null
+})
+const Setting = Loadable({
+    loader: () => import('./components/setting/setting.js'),
+    loading: () => null
+})
+const Vip = Loadable({
+    loader: () => import('./components/vip/vip.js'),
+    loading: () => null
+})
+const Store = Loadable({
+    loader: () => import('./components/store/store.js'),
+    loading: () => null
+})
+const Data = Loadable({
+    loader: () => import('./components/data/data.js'),
+    loading: () => null
+})
 const router = () => {
     return (
             <Switch>

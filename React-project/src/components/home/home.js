@@ -6,7 +6,7 @@ class Home extends React.Component {
         return (
 
             <div className={'container'}>
-                首页111
+                首页
             </div>
         )
     }

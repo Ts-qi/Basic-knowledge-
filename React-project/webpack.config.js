@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 
 module.exports = {
@@ -11,7 +12,9 @@ module.exports = {
     },
     output: {
         filename: 'app.js',
-        path: path.resolve(__dirname ,'dist')
+        path: path.resolve(__dirname ,'dist'),
+        chunkFilename: 'js/[name].[chunkhash:8].chunk.js'
+
     },
     module: {
         rules: [
@@ -23,15 +26,20 @@ module.exports = {
                 test: /\.(png|jpeg|gif|svg|jpg)$/,
                 use: [ 'url-loader']
             },
+
             {
                 test: /\.styl$/, 
-                use: ['style-loader', 'css-loader', 'stylus-loader'], 
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    }, 'css-loader', 'stylus-loader'],
+                 
             },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader?cacheDirectory'
                 }
             }
         ]
@@ -40,6 +48,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             title:'react-project',
             template:'./index.html'
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].[chunkhash:8].css",
+            chunkFilename: "[name].chunk.[chunkhash:8].css"
         }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
