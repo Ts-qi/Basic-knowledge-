@@ -1,29 +1,33 @@
 import React from 'react';
 import { Menu, Icon, Switch } from 'antd';
 import './nav.styl';
-const SubMenu = Menu.SubMenu;
+import { 
+    withRouter,
+    
+} from 'react-router-dom';
 class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             navInfo: [
-                {name:'概况',id:1},
-                {name:'产品',id:2},
-                {name:'设置',id:3},
-                {name:'会员',id:4},
-                {name:'营销',id:5},
-                {name:'店铺',id:6},
-                {name:'数据',id:7},
+                {name:'概况',id:1,url:'/'},
+                {name:'产品',id:2,url:'/goods'},
+                {name:'设置',id:3,url:'/setting'},
+                {name:'会员',id:4,url:'/vip'},
+                {name:'店铺',id:5,url:'/store'},
+                {name:'数据',id:6,url:'/data'},
             ]
         }
         this.handleRoute = this.handleRoute.bind(this);
     }
-
+    handleRoute(url) {
+        let { history } = this.props;
+        history.push(url)
+    }
    
 
     render () {
         let { navInfo } = this.state;
-        console.log(this.props,'参数')
         return (
             <div className={'navWarpper'}>
                 <div className={'navValter'}>
@@ -32,9 +36,9 @@ class Nav extends React.Component {
                 {
                     navInfo && navInfo.length >0 ?
                     navInfo.map((item,index) => {
-                        return <div className={'navItem'} key={index} onClick={ this.handleRoute(item)} >
+                      {  return <div className={'navItem'} key={index} onClick={ this.handleRoute.bind(this,item.url)} >
                                     { item.name}
-                                </div>
+                                </div>}
                     }): null
 
                 }
@@ -44,4 +48,4 @@ class Nav extends React.Component {
     }
 };
 
-export default Nav;
+export default withRouter(Nav) ;
