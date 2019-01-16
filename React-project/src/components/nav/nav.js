@@ -16,10 +16,14 @@ class Nav extends React.Component {
                 {name:'数据',id:7},
             ]
         }
+        this.handleRoute = this.handleRoute.bind(this);
     }
+
+   
 
     render () {
         let { navInfo } = this.state;
+        console.log(this.props,'参数')
         return (
             <div className={'navWarpper'}>
                 <div className={'navValter'}>
@@ -28,7 +32,7 @@ class Nav extends React.Component {
                 {
                     navInfo && navInfo.length >0 ?
                     navInfo.map((item,index) => {
-                        return <div className={'navItem'} key={index} >
+                        return <div className={'navItem'} key={index} onClick={ this.handleRoute(item)} >
                                     { item.name}
                                 </div>
                     }): null
