@@ -5,7 +5,7 @@ class Setting extends React.Component {
     render () {
         return (
 
-            <div>设置3232</div>
+            <div>设置32323333</div>
         )
     }
 
