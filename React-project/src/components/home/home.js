@@ -5,7 +5,9 @@ class Home extends React.Component {
     render () {
         return (
 
-            <div>概况首页</div>
+            <div className={'container'}>
+                首页111
+            </div>
         )
     }
 

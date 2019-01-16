@@ -17,11 +17,11 @@ const router = () => {
     return (
             <Switch>
                 <Route exact path='/' component={ Home }/>
-                <Route exact path='/goods' component={ Goods }/>
-                <Route exact path='/setting' component={ Setting }/>
-                <Route exact path='/vip' component={ Vip }/>
-                <Route exact path='/store' component={ Store }/>
-                <Route exact path='/data' component={ Data }/>
+                <Route path='/goods' component={ Goods }/>
+                <Route path='/setting' component={ Setting }/>
+                <Route path='/vip' component={ Vip }/>
+                <Route path='/store' component={ Store }/>
+                <Route path='/data' component={ Data }/>
             
             </Switch>
 

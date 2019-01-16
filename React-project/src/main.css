@@ -15,13 +15,14 @@
     height: 100%;
     margin-left: 120px ;
     /* background: green; */
+    background: rgb(249,249,249);
 }
 .navTop {
     height: 50px;
     width: 100%;
     line-height: 50px;
     padding-left: 20px;
-    border-bottom: 1px solid gray;
+    background: white;
 }
 .name {
     display: inline-block;
@@ -36,4 +37,7 @@
     display: inline-block;
     float: right;
     padding-right: 20px;
+}
+.container {
+   
 }
