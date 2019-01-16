@@ -58,7 +58,9 @@
             template:'./index.html'
         })
     ]
-19 
+19 配置启动的服务器 npm install webpack-dev-server
+
+20 在 webpack.config.js  中引入 webpack ; 再配置插件中配置热更新
 
 
 

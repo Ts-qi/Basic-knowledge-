@@ -1,3 +1,17 @@
-div {
-    color: red;
+.mainWarper {
+    width: 100%;
+    height: 100%;
+}
+
+.navLeft {
+    width: 120px;
+    height: 100%;
+    float: left;
+    background: red
+}
+
+.mainContent {
+    height: 100%;
+    margin-left: 120px ;
+    background: green;
 }

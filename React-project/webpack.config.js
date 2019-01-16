@@ -1,6 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
+
 module.exports = {
+    devtool:'cheap-module-eval-source-map',
     mode: 'development',
     entry: {
         filename: './src/index.js'
@@ -20,6 +24,10 @@ module.exports = {
                 use: [ 'url-loader']
             },
             {
+                test: /\.styl$/, 
+                use: ['style-loader', 'css-loader', 'stylus-loader'], 
+            },
+            {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
@@ -32,6 +40,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             title:'react-project',
             template:'./index.html'
-        })
-    ]
+        }),
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer : {
+        contentBase: './dist',
+		hot: true
+    }
 }
