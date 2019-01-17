@@ -38,6 +38,12 @@
     float: right;
     padding-right: 20px;
 }
-.container {
-   
+.display {
+    display: inline-block;
+}
+.padding {
+    padding: 40px;
+}
+.padding-top {
+    padding-top: 10px;
 }

@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')//将CSS提取为独立的文件的插件，对每个包含css的js文件都会创建一个CSS文件，支持按需加载css和sourceMap
 
 
 module.exports = {
@@ -29,9 +29,8 @@ module.exports = {
             {
                 test: /\.styl$/, 
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader
-                    }, 'css-loader', 'stylus-loader'],
+                     MiniCssExtractPlugin.loader
+                    , 'css-loader', 'stylus-loader'],
                  
             },
             {
