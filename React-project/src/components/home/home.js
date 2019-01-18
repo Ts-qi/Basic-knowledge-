@@ -6,23 +6,27 @@ class Home extends React.Component {
         super(props) 
         this.state = {
             imageList: [
-                { url:require('../../assets/images/01.png'),name:'订单管理'},
-                { url:require('../../assets/images/02.png'),name:'新增线路'},
-                { url:require('../../assets/images/03.png'),name:'店铺装修'},
-                { url:require('../../assets/images/04.png'),name:'客户管理'},
-                { url:require('../../assets/images/05.png'),name:'店铺统计'},
-                { url:require('../../assets/images/06.png'),name:'消息通知'},
+                { url:require('../../assets/images/01.png'),name:'产品'},
+                { url:require('../../assets/images/02.png'),name:'数据'},
+                { url:require('../../assets/images/03.png'),name:'设置'},
+                { url:require('../../assets/images/04.png'),name:'会员'},
+                { url:require('../../assets/images/05.png'),name:'店铺'},
             ]
         }
         
     }
     handleClick (name) {
         let { history } = this.props;
-        let nameList = nameList.push(name)
-        if(name == '订单管理') {
+        if(name == '产品') {
             history.push('./goods')
-        }else if(name == '店铺装修') {
+        }else if(name == '店铺') {
             history.push('./store')
+        }else if(name == '数据') {
+            history.push('./ data')
+        }else if(name == '会员') {
+            history.push('./vip')
+        }else if(name == '设置') {
+            history.push('./setting')
         }
     }
     

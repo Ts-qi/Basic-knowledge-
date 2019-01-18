@@ -44,10 +44,12 @@ class App extends React.Component {
                                 </Dropdown>
                             </div>
                         </div>
-
-                        {/* 路由切换内容 */}
+                          {/* 路由切换内容 */}
+                        <div >
                             <Route></Route>
+                        </div>
 
+                
                     </div>
                     
                 </div>
