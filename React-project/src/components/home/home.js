@@ -16,6 +16,15 @@ class Home extends React.Component {
         }
         
     }
+    handleClick (name) {
+        let { history } = this.props;
+        let nameList = nameList.push(name)
+        if(name == '订单管理') {
+            history.push('./goods')
+        }else if(name == '店铺装修') {
+            history.push('./store')
+        }
+    }
     
 
     render () {
@@ -73,9 +82,13 @@ class Home extends React.Component {
                                     {
                                         imageList && imageList.length > 0 ?
                                         imageList.map((img,index) => {
-                                            return  <div className="fun-img" key={index}>
-                                                        <img src={img.url} alt=" 暂无图片"/>
+                                            return  <div  key={index} className="displays" onClick={this.handleClick.bind(this,img.name)}>
+                                                        <span className="fun-img">
+                                                            <img src={img.url} alt=" 暂无图片"/>
+                                                        </span>
+                                                        <p>{img.name}</p>
                                                     </div>
+                                             
                                         }) : null
                                          
                                     }
