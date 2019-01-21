@@ -43,7 +43,38 @@
             }
             对于loader 来说，肯定是作用在js 代码上的；然后node_modules 中的东西都是编译过的，就不用在去处理了；
         a 对于编译过的文件 可以缓存起来， 在次编译的时候，只需要编译更改的文件就可以的了，加下列代码 就可以大幅度的减少打包时间
-          loader: 'babel-loader?cacheDirectory=true'
+          loader: 'babel-loader?cacheDirectory=true'；
+
+        2 HappyPack 
+            受限于 js 的单线程， webpack 的打包也是单线程的；特别是在执行 loader 的时候，长时间编译的任务很多，这就导致了等待；
+            happyPack 可以将loader 的同步执行转为并行的；提高打包效率；
+            const HappyPack =require (’happypack’);
+            // 构造出共享进程池，在进程池中包含 5 个子进程
+            const happyThreadPool = HappyPack.ThreadPool({ size : 5 )) ;
+            module: {
+              loaders: [
+                {
+                  test: /\.js$/,
+                  include: [resolve('src')],
+                  exclude: /node_modules/,
+                  // id 后面的内容对应下面
+                  loader: 'happypack/loader?id=happybabel'
+                }
+              ]
+            },
+            plugins: [
+              new HappyPack({
+                id: 'happybabel',
+                loaders: ['babel-loader?cacheDirectory'],
+                // 开启 4 个线程
+                threads: 4，
+                threadPool: happyThreadPool
+              })
+            ]
+            HappyPack实列中的id属性会和 happypack/loader?id=xxx 中的xxx对应，HappyPack实列中除了有 id 和 loaders两个属性外，还有如下几个属性：
+              threads: 代表开启几个子进程去处理这一类文件，默认是3个，必须是整数。
+              verbose: 是否允许HappyPack输出日志，默认为true。
+              threadPool: 代表共享进程池。即多个HappyPack实列都使用同一个共享进程池中的子进程去处理任务。以防止资源占用过多
 
     */
     
