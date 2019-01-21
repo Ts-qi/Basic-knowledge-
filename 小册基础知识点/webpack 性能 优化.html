@@ -47,7 +47,7 @@
 
         2 HappyPack 
             受限于 js 的单线程， webpack 的打包也是单线程的；特别是在执行 loader 的时候，长时间编译的任务很多，这就导致了等待；
-            happyPack 可以将loader 的同步执行转为并行的；提高打包效率；
+            happyPack 可以将loader 的同步执行转为并行的； Node 多线程进行构建，以此来提高打包效率；
             const HappyPack =require (’happypack’);
             // 构造出共享进程池，在进程池中包含 5 个子进程
             const happyThreadPool = HappyPack.ThreadPool({ size : 5 )) ;
@@ -76,6 +76,46 @@
               verbose: 是否允许HappyPack输出日志，默认为true。
               threadPool: 代表共享进程池。即多个HappyPack实列都使用同一个共享进程池中的子进程去处理任务。以防止资源占用过多
 
+
+          3 DllPlugin 
+              DllPlugin 可以将特定的类库，提前打包，然后在引入；减少打包类库的次数，只有当类库更新版本，才需要重新打包；
+              并且也实现了将公共代码抽离成单独文件的优化方案；
+              必须单独配置一个文件夹进行配置；
+              // webpack.dll.config.js
+              const path = require('path')
+              const webpack = require('webpack')
+              module.exports = {
+                entry: {
+                  // 想统一打包的类库
+                  vendor: ['react']
+                },
+                output: {
+                  path: path.join(__dirname, 'dist'),
+                  filename: '[name].dll.js',
+                  library: '[name]-[hash]'
+                },
+                plugins: [
+                  new webpack.DllPlugin({
+                    // name 必须和 output.library 一致
+                    name: '[name]-[hash]',
+                    // 该属性需要与 DllReferencePlugin 中一致
+                    context: __dirname,
+                    path: path.join(__dirname, 'dist', '[name]-manifest.json')
+                  })
+                ]
+              }
+              在打包的时候 需要依赖这个配置文件生成依赖文件，接下来我们需要使用 DllReferencePlugin 将依赖文件引入项目中
+              // webpack.conf.js
+              module.exports = {
+                // ...省略其他配置
+                plugins: [
+                  new webpack.DllReferencePlugin({
+                    context: __dirname,
+                    // manifest 就是之前打包出来的 json 文件
+                    manifest: require('./dist/vendor-manifest.json'),
+                  })
+                ]
+              }
     */
     
     
