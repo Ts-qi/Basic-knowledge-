@@ -23,7 +23,28 @@
     /**
      *  1 优化loader
      * 
-     *   对于Loader 来说： 影响打包效率的就是babel ； 
+     *   对于Loader 来说： 影响打包效率的就是babel ； 因为 Babel 会将代码转换成字符串，生成 AST(抽象语法树)；然后 babel 在对 AST
+     *    继续进行转变，最后生成新的代码；项目越大转变的 代码越多，效率就越低；
+     *  a 优化 loader 的搜索范围；
+     *      module.exports = {
+              module: {
+                rules: [
+                  {
+                    // js 文件才使用 babel
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    // 只在 src 文件夹下查找，只打包
+                    include: [resolve('src')],
+                    // 不会去查找的路径，排除node_modules
+                    exclude: /node_modules/
+                  }
+                ]
+              }
+            }
+            对于loader 来说，肯定是作用在js 代码上的；然后node_modules 中的东西都是编译过的，就不用在去处理了；
+        a 对于编译过的文件 可以缓存起来， 在次编译的时候，只需要编译更改的文件就可以的了，加下列代码 就可以大幅度的减少打包时间
+          loader: 'babel-loader?cacheDirectory=true'
+
     */
     
     
