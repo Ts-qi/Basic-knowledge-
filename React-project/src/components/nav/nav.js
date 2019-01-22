@@ -22,7 +22,8 @@ class Nav extends React.Component {
     }
     handleRoute(url) {
         let { history } = this.props;
-        history.push(url)
+        history.push(url);
+       
     }
    
 
