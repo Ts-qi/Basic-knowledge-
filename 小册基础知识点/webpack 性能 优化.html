@@ -116,6 +116,10 @@
                   })
                 ]
               }
+            4 压缩打包
+              在 webpack 3 中的代码压缩 是插件UglifyJs 进行代码压缩；但是这个是单线程运行的，为了加快效率，
+              我们可以使用webpack-parallel-uglify-plugin，来提高效率；
+              在 webpack4 中不用以上这些操作了；只需要将 mode模式设置为production ，就可以默认开启以上功能
     */
     
     

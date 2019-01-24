@@ -1,6 +1,6 @@
 import React from 'react'
-import Nav from './components/nav/nav.js';
-import Route from './route'
+// import Nav from './components/nav/nav.js';
+import Route from './routes'
 import { 
     BrowserRouter
 } from 'react-router-dom';
@@ -29,7 +29,7 @@ class App extends React.Component {
 
                 <div className={'mainWarper'}>
                     <div className={'navLeft'}>
-                        <Nav/>
+                        
                     </div>
                     <div className={'mainContent'}>
                         <div className={'navTop'}>
