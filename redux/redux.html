@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    唐七
+  </div>
+  <script>
+    /*
+     1 redux  是一种新型的前端架构模式； react-redux 是redux 和 react 相互结合的一个库；
+
+     2 早期的 redux 是为了解决数据共享状态的时候，每个人都可以去修改它；为了解决这个问题； 方法是可以将其数据更改的门槛提高；
+
+
+     3 定义一个函数专门负责数据的修改；
+    
+    
+    
+    **/
+    // 初始状态值
+     let stateApp = {
+       title:'唐七',
+       text:'明天要回家了'
+     };
+     // 改变stateApp 的值
+     function stateChanger(state = stateApp,action) {
+       switch(action.type) {
+        case 'CHANGE_TITLE':
+           state.title = action.title;
+          break;
+        case 'CHANGE_TEXT':
+           state.text = action.text;
+          break;
+        default:
+          break;
+       }
+     };
+    
+     // 封装createStore 函数
+     function createStore ( state, stateChanger) {
+       let getState =()=> state;
+       let  dispatch = (action)=> stateChanger (state,action)
+       return {
+         getState,
+         dispatch
+       }
+     }
+      //定义 store 函数
+    let store = createStore(stateApp,stateChanger)
+     store.dispatch({
+       type:'CHANGE_TEXT',
+       text:'好不开心吗 ？ 是的 没有吗'
+     })
+    //  store.getState();
+     console.log(stateApp,'哈哈')
+    
+  </script>
+</body>
+</html>

@@ -4,11 +4,18 @@ import App from './app.js'
 import 'antd/dist/antd.css';
 import './main.css'
 
+import counter from './reducer/index'
+import store from '../src/store/store'
 
-ReactDom.render(
-  <App/>,
+
+const render= ()=> {
+  ReactDom.render(
+  <App store={store}/>,
   document.getElementById('root')
-);
+)}
+render();
+
+store.subscribe(render);
 if (module.hot) {
   module.hot.accept()
 }

@@ -6,6 +6,10 @@ import {
 } from 'react-router-dom';
 import './main.css'
 
+
+import Counter from '../src/components/counter/Counter.js'
+
+
 import { Menu, Dropdown, Icon } from 'antd';
 const menu = (
     <Menu>
@@ -19,7 +23,7 @@ class App extends React.Component {
     constructor(props) {
         super(props) ;
         this.state = {
-            loginName:'智慧旅游'
+            loginName:'Redux Learn'
         }
     }
     render() {
@@ -29,7 +33,7 @@ class App extends React.Component {
 
                 <div className={'mainWarper'}>
                     <div className={'navLeft'}>
-                        
+                        菜单导航
                     </div>
                     <div className={'mainContent'}>
                         <div className={'navTop'}>
@@ -46,7 +50,11 @@ class App extends React.Component {
                         </div>
                           {/* 路由切换内容 */}
                         <div >
-                            <Route></Route>
+
+                            <Counter 
+                                value={this.props.store.getState()}
+                                onIncrement={() =>this.props. store.dispatch({ type: 'INCREMENT' })}
+                                onDecrement={() =>this.props. store.dispatch({ type: 'DECREMENT' })}/>
                         </div>
 
                 
