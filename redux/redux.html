@@ -41,7 +41,7 @@
        }
      };
     
-     // 封装createStore 函数
+     // 封装createStore 函数  返回的是 state 和一个dispatch 函数；就是reducer
      function createStore ( state, stateChanger) {
        let getState =()=> state;
        let  dispatch = (action)=> stateChanger (state,action)
@@ -50,7 +50,7 @@
          dispatch
        }
      }
-      //定义 store 函数
+      //定义 store 函数；以此拿到 createStore 中返回的函数
     let store = createStore(stateApp,stateChanger)
      store.dispatch({
        type:'CHANGE_TEXT',
