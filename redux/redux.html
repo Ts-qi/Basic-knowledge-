@@ -12,12 +12,15 @@
   </div>
   <script>
     /*
-     1 redux  是一种新型的前端架构模式； react-redux 是redux 和 react 相互结合的一个库；
+     一  redux  是一种新型的前端架构模式； react-redux 是redux 和 react 相互结合的一个库；
 
-     2 早期的 redux 是为了解决数据共享状态的时候，每个人都可以去修改它；为了解决这个问题； 方法是可以将其数据更改的门槛提高；
+     二 早期的 redux 是为了解决数据共享状态的时候，每个人都可以去修改它；为了解决这个问题； 方法是可以将其数据更改的门槛提高；
 
 
-     3 定义一个函数专门负责数据的修改；stateChanger();
+     三 定义一个函数专门负责数据的修改；stateChanger();
+
+     四 观察者模式；当数据发生变化的时候，我们希望可以自动的监听到变化；而不是需要人为的去触发 而进行变动；这个时候就需要用到观察者模式
+        进行订阅发布；更新 UI 试图组件；
     
     
     
@@ -29,6 +32,10 @@
        text:'明天要回家了'
      };
      //2  改变stateApp 的值
+
+
+
+
      function stateChanger(state = stateApp,action) {
        switch(action.type) {
         case 'CHANGE_TITLE':
@@ -43,16 +50,23 @@
      };
     
      // 3 封装createStore 函数  返回的是 state 和一个dispatch 函数；就是reducer
+     
+
      function createStore ( state, stateChanger) {
        let getState =()=> state;
-       let  dispatch = (action)=> stateChanger (state,action)
+       let  dispatch = (action)=> stateChanger (state,action);
+       //监听数据的变化
+       let listeners = []
+       let subscribe = (listener)=>listeners.push(listener)
        return {
          getState,
-         dispatch
+         dispatch,
+         subscribe
        }
      }
       // 4 定义 store 函数；以此拿到 createStore 中返回的函数
     let store = createStore(stateApp,stateChanger)
+    store.subscribe(() => renderApp(store.getState())) // 监听数据变化
      store.dispatch({
        type:'CHANGE_TEXT',
        text:'好不开心吗 ？ 是的 没有吗'
@@ -61,6 +75,7 @@
     //  store.getState();
      console.log(stateApp,'哈哈')
     // 5 在 stateAPP 中数据更改后要手动调用 render（） 函数才能进行数据刷新；此处就需要一个 东西来监控数据变化；
+    //  我们需要在 dispatch中去定义一个数组；listeners = [] ； 定义一个subscribe() 函数
      
     
   </script>
