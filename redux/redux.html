@@ -17,17 +17,18 @@
      2 早期的 redux 是为了解决数据共享状态的时候，每个人都可以去修改它；为了解决这个问题； 方法是可以将其数据更改的门槛提高；
 
 
-     3 定义一个函数专门负责数据的修改；
+     3 定义一个函数专门负责数据的修改；stateChanger();
     
     
     
     **/
-    // 初始状态值
+    //1  初始状态值
+    // debugger
      let stateApp = {
        title:'唐七',
        text:'明天要回家了'
      };
-     // 改变stateApp 的值
+     //2  改变stateApp 的值
      function stateChanger(state = stateApp,action) {
        switch(action.type) {
         case 'CHANGE_TITLE':
@@ -41,7 +42,7 @@
        }
      };
     
-     // 封装createStore 函数  返回的是 state 和一个dispatch 函数；就是reducer
+     // 3 封装createStore 函数  返回的是 state 和一个dispatch 函数；就是reducer
      function createStore ( state, stateChanger) {
        let getState =()=> state;
        let  dispatch = (action)=> stateChanger (state,action)
@@ -50,14 +51,17 @@
          dispatch
        }
      }
-      //定义 store 函数；以此拿到 createStore 中返回的函数
+      // 4 定义 store 函数；以此拿到 createStore 中返回的函数
     let store = createStore(stateApp,stateChanger)
      store.dispatch({
        type:'CHANGE_TEXT',
        text:'好不开心吗 ？ 是的 没有吗'
      })
+     
     //  store.getState();
      console.log(stateApp,'哈哈')
+    // 5 在 stateAPP 中数据更改后要手动调用 render（） 函数才能进行数据刷新；此处就需要一个 东西来监控数据变化；
+     
     
   </script>
 </body>
