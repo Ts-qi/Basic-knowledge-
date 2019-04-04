@@ -23,11 +23,11 @@ class App extends React.Component {
     constructor(props) {
         super(props) ;
         this.state = {
-            loginName:'Redux Learn'
+            // loginName:''
         }
     }
     render() {
-        let { loginName } = this.state
+        let { loginName = 'tangqi' } = this.state
         return (
             <BrowserRouter>
 

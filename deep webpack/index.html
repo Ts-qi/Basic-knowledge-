@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*  
+
+      enter  入口 可以有多个，但是 出口只能有一个
+      1  Entry  类型   
+
+        类型： 
+          string 
+          array    需要搭配 out.library 配置使用时，只有数组里的最后一个入口文件的模块会被导出；
+          object  
+
+      2  chunk 的名称
+
+        每个 webpack 会为每个生成的 Chunk 取一个名称，Chunk 的名称 和 Entry 的配置有关；
+
+        1  如果 entry 是 一个 string  或者 array，就会生成一个 Chunk ,这时 Chunk 的名称是 main；
+        2 如果 entry 是一个object, 就可能出现多个 Chunk,这时的 Chunk 的名称是 object键值对中键的名称；
+
+
+      3 动态配置 entry
+         项目里有过个页面需要为每个页面的入口配置一个 Entry ，但是这些页面的数量可能是会不断的增长；则这时 Entry 的配置会受到其他因素的影响。导致不能写成静态的值；；
+          解决方法是将 Entry设置成一个函数动态地返回上面所说的配置:
+                // 同步函数 
+                  entry: () => {
+                    return {
+                    a : ’. / p ages /a ’, b :’./pages / b ’,
+                    //异步函数
+                    entry: () => {
+                    return new Promise ((resolve)=>{
+                    resolve({
+                    a :’. / pages /a ’, b :’. /pages /b ’,
+                    }); }) };
+
+      4 output.publicPath 配置发布到线上资源的 URL 前缀; ;
+
+      这样说可能有点抽象，举个例子，需要将构建出的资源文件上传到 CDN服务上，以利于 加快页面的打开速度。配置代码如下 :
+····    filename : ’ [name) [chunkhash:8] .js ’ publicPath:’https://cdn.example.com/assets/ ’
+        这时发布到线上的 HTML 在引入 JavaScript 文件时就需要以下配置项: <script src= ’ https://cdn.example .com/assets/a_12345678.js ’ > <
+          /script>
+    
+    */
+    
+    
+  
+  
+  </script>
+</body>
+</html>

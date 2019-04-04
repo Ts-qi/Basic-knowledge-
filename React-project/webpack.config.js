@@ -13,7 +13,8 @@ module.exports = {
     output: {
         filename: 'app.js',
         path: path.resolve(__dirname ,'dist'),
-        chunkFilename: 'js/[name].[chunkhash:8].chunk.js'
+        chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
+        publicPath:'/'
     },
     module: {
         rules: [
@@ -74,4 +75,5 @@ module.exports = {
         port: 9000,
         historyApiFallback: true
     }
+
 }
